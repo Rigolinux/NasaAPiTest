@@ -1,0 +1,16 @@
+<div class="header-dialog" style="display: flex; justify-content: space-between;">
+    <h1 mat-dialog-title>{{data.title}}</h1>
+    <mat-icon aria-hidden="false" (click)="onNoClick()" style="cursor: pointer;" aria-label="Example home icon">close</mat-icon>
+</div>
+<div mat-dialog-content>
+  <p><strong>Center:</strong> {{data.center}}</p>
+  <p><strong>Date Created:</strong> {{convertDateString(data.date_created)}}</p>
+  <p><strong>Description:</strong></p>
+  <p>{{data.description}}</p>
+  <p><strong>Keywords:</strong> {{data.keywords.join(', ')}}</p>
+  <p><strong>Media Type:</strong> {{data.media_type}}</p>
+  <p><strong>NASA ID:</strong> {{data.nasa_id}}</p>
+  <p><strong>Photographer:</strong> {{data.photographer}}</p>
+</div>
+
+

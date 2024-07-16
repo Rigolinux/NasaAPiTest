@@ -1,0 +1,54 @@
+<div>
+  <div class="sticky header-content" >
+    <h1 style="margin-top: 10px;"> {{title}}</h1>
+    <div class="header-content">
+      <mat-form-field appearance="fill" style="margin-right: 20px;">
+        <mat-label>Recen or Popular</mat-label>
+        <mat-select   (selectionChange)="getImages($event.value)">
+          <mat-option *ngFor="let type of types" [value]="type.value">
+            {{type.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Media Type</mat-label>
+        <mat-select (selectionChange)="getByQuery($event.value)" >
+          <mat-option *ngFor="let type of typesMedia" [value]="type.value">
+            {{type.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+  </div>
+ 
+
+  <mat-grid-list cols="3" gutterSize="20px" rowHeight="1:1">
+    <mat-grid-tile *ngFor="let item of imagesList; let i = index" (click)="openDialog(item.data[0])" class="pointer">
+      <mat-card class="mat-card-item">
+        <ng-container *ngIf="item.href">
+          <img mat-card-image [src]="item.links[0]?.href" height="300" width="300" alt="Imagen NASA">
+        </ng-container>
+        <ng-container *ngIf="!item.href">
+          <img mat-card-image src="assets/no-image.jpg" height="200" width="200" alt="Imagen no disponible">
+        </ng-container>
+        <mat-card-content>
+          <h2 mat-card-title>{{ item.data[0]?.title }} {{i}}</h2>
+          <p mat-card-subtitle>Fotógrafo: {{ item.data[0]?.photographer ? item.data[0]?.photographer :'N/A' }}</p>
+          
+        
+        </mat-card-content>
+        
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  
+  
+  
+  
+</div>
+
+<style>
+
+
+</style>
